@@ -2,7 +2,7 @@ package ru.kolyasnikovkv.collectiondvd.repository;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import ru.kolyasnikovkv.collectiondvd.dto.CollectionDVDDTO;
+import ru.kolyasnikovkv.collectiondvd.dto.DVDDTO;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -22,7 +22,7 @@ import java.time.LocalTime;
         name="mapDataInDto",
         classes = {
                 @ConstructorResult(
-                        targetClass= CollectionDVDDTO.class,
+                        targetClass= DVDDTO.class,
                         columns = { @ColumnResult(name = "id", type = Long.class),
                                     @ColumnResult(name = "name", type = String.class) }
                 )
@@ -35,7 +35,7 @@ import java.time.LocalTime;
         resultSetMapping="mapDataInDto"
 )
 @Table(name = "collection_dvd")
-public class CollectionDVD {
+public class DVD {
     public static final int START_SEQ = 100000;
 
     @Id
@@ -73,10 +73,10 @@ public class CollectionDVD {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Producer producer;
 
-    public CollectionDVD() {
+    public DVD() {
     }
 
-     public CollectionDVD(String name, String description, Genre genre, Country country, Producer producer) {
+     public DVD(String name, String description, Genre genre, Country country, Producer producer) {
         this.dateTime = LocalDateTime.now();
         this.genre = genre;
         this.country = country;

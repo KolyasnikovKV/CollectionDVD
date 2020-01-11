@@ -1,6 +1,5 @@
 package ru.kolyasnikovkv.collectiondvd;
 
-import ru.kolyasnikovkv.collectiondvd.dto.CollectionDVDDTO;
 import ru.kolyasnikovkv.collectiondvd.repository.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
@@ -11,7 +10,7 @@ public class CollectionApp {
         GenreRepository genreRepository = context.getBean(GenreRepository.class);
         CountryRepository countryRepository = context.getBean(CountryRepository.class);
         ProducerRepository producerRepository = context.getBean(ProducerRepository.class);
-        CollectionDVDRepository collectionDVDRepository = context.getBean(CollectionDVDRepository.class);
+        DVDRepository collectionDVDRepository = context.getBean(DVDRepository.class);
 
         Genre genre = new Genre("Triller");
         genreRepository.save(genre);
@@ -22,20 +21,20 @@ public class CollectionApp {
         Producer producer = new Producer("Spielberg");
         producerRepository.save(producer);
 
-        CollectionDVD collectionDVD = new CollectionDVD("Moon", "Moon", genre, country, producer);
+        DVD collectionDVD = new DVD("Moon", "Moon", genre, country, producer);
         collectionDVDRepository.save(collectionDVD);
 
-        Iterable<CollectionDVD> findDVDs = collectionDVDRepository.findAll();
+        Iterable<DVD> findDVDs = collectionDVDRepository.findAll();
         System.out.println("DVD found with findAll():");
         System.out.println("************************LIST DVD************************ ");
-        for (CollectionDVD dvd : findDVDs) {
+        for (DVD dvd : findDVDs) {
             System.out.println(dvd);
             System.out.println(dvd.getProducer());
             System.out.println("------------------------");
         }
 
         /*Вот эта строка если раскоментировать выдает ошибку
-        CollectionDVDDTO findDVDdto = collectionDVDRepository.getDataInDto();*/
+        DVDDTO findDVDdto = collectionDVDRepository.getDataInDto();*/
 
         /*org.hibernate.HibernateException: Got different size of tuples and aliases
 	at org.hibernate.jpa.spi.NativeQueryTupleTransformer$NativeTupleImpl.<init>(NativeQueryTupleTransformer.java:68)
@@ -55,7 +54,7 @@ public class CollectionApp {
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498) */
 
-        /*for (CollectionDVDDTO dvd : findDVDdto) {
+        /*for (DVDDTO dvd : findDVDdto) {
             System.out.println(dvd);
             System.out.println("------------------------");
         }*/
