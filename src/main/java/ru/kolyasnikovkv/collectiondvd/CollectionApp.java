@@ -34,8 +34,27 @@ public class CollectionApp {
             System.out.println("------------------------");
         }
 
-        //CollectionDVDDTO findDVDdto = collectionDVDRepository.getDataInDto(100003);
-        //CollectionDVDDTO findDVDdto = collectionDVDRepository.getDataInDto();
+        /*Вот эта строка если раскоментировать выдает ошибку
+        CollectionDVDDTO findDVDdto = collectionDVDRepository.getDataInDto();*/
+
+        /*org.hibernate.HibernateException: Got different size of tuples and aliases
+	at org.hibernate.jpa.spi.NativeQueryTupleTransformer$NativeTupleImpl.<init>(NativeQueryTupleTransformer.java:68)
+	at org.hibernate.jpa.spi.NativeQueryTupleTransformer.transformTuple(NativeQueryTupleTransformer.java:28)
+	at org.hibernate.hql.internal.HolderInstantiator.instantiate(HolderInstantiator.java:85)
+	at org.hibernate.loader.custom.CustomLoader.getResultList(CustomLoader.java:433)
+	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2629)
+	at org.hibernate.loader.Loader.list(Loader.java:2624)
+	at org.hibernate.loader.custom.CustomLoader.list(CustomLoader.java:338)
+	at org.hibernate.internal.SessionImpl.listCustomQuery(SessionImpl.java:2123)
+	at org.hibernate.internal.AbstractSharedSessionContract.list(AbstractSharedSessionContract.java:1134)
+	at org.hibernate.query.internal.NativeQueryImpl.doList(NativeQueryImpl.java:173)
+	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1526)
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1574)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498) */
+
         /*for (CollectionDVDDTO dvd : findDVDdto) {
             System.out.println(dvd);
             System.out.println("------------------------");
