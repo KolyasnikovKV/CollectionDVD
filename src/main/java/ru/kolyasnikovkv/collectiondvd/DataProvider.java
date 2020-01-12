@@ -1,6 +1,7 @@
 package ru.kolyasnikovkv.collectiondvd;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -14,6 +15,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
 
 @Configuration
+@ComponentScan
 @EnableJpaRepositories
 public class DataProvider {
     @Bean
@@ -32,7 +34,7 @@ public class DataProvider {
         LocalContainerEntityManagerFactoryBean lef = new LocalContainerEntityManagerFactoryBean();
         lef.setDataSource(dataSource);
         lef.setJpaVendorAdapter(jpaVendorAdapter);
-        lef.setPackagesToScan("ru.kolyasnikovkv.collectiondvd.repository");
+        lef.setPackagesToScan("ru.kolyasnikovkv.collectiondvd");
         return lef;
     }
 

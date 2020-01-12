@@ -1,30 +1,38 @@
 package ru.kolyasnikovkv.collectiondvd;
 
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import ru.kolyasnikovkv.collectiondvd.repository.*;
+import ru.kolyasnikovkv.collectiondvd.service.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 
 public class CollectionApp {
-    public static void main(String[] args) {
+
+      public static void  main(String[] args) {
+
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(DataProvider.class);
-        GenreRepository genreRepository = context.getBean(GenreRepository.class);
-        CountryRepository countryRepository = context.getBean(CountryRepository.class);
-        ProducerRepository producerRepository = context.getBean(ProducerRepository.class);
-        DVDRepository collectionDVDRepository = context.getBean(DVDRepository.class);
+
+        MyService myService = (MyService) context.getBean(MyService.class);
 
         Genre genre = new Genre("Triller");
-        genreRepository.save(genre);
+        myService.genreRepository.save(genre);
 
         Country country = new Country("USA");
-        countryRepository.save(country);
+        myService.countryRepository.save(country);
 
         Producer producer = new Producer("Spielberg");
-        producerRepository.save(producer);
+        myService.producerRepository.save(producer);
 
         DVD collectionDVD = new DVD("Moon", "Moon", genre, country, producer);
-        collectionDVDRepository.save(collectionDVD);
+        myService.dvdRepository.save(collectionDVD);
 
-        Iterable<DVD> findDVDs = collectionDVDRepository.findAll();
+        Iterable<DVD> findDVDs = myService.dvdRepository.findAll();
         System.out.println("DVD found with findAll():");
         System.out.println("************************LIST DVD************************ ");
         for (DVD dvd : findDVDs) {
@@ -33,7 +41,7 @@ public class CollectionApp {
             System.out.println("------------------------");
         }
 
-        /*Вот эта строка если раскоментировать выдает ошибку
+        /*Вот эта строка если раскоментировать выдает ОШИБКУ
         DVDDTO findDVDdto = collectionDVDRepository.getDataInDto();*/
 
         /*org.hibernate.HibernateException: Got different size of tuples and aliases
