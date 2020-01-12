@@ -34,6 +34,10 @@ import java.time.LocalTime;
         query="SELECT id, name FROM collection_dvd limit 1",
         resultSetMapping="mapDataInDto"
 )
+
+/*@NamedQueries({
+        @NamedQuery(name="DVD.findAll", query="SELECT c from DVD c")
+})*/
 @Table(name = "collection_dvd")
 public class DVD {
     public static final int START_SEQ = 100000;
