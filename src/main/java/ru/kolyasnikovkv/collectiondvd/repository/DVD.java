@@ -3,6 +3,7 @@ package ru.kolyasnikovkv.collectiondvd.repository;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import ru.kolyasnikovkv.collectiondvd.dto.DVDDTO;
+import ru.kolyasnikovkv.collectiondvd.generics.AbstractEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -39,15 +40,7 @@ import java.time.LocalTime;
         @NamedQuery(name="DVD.findAll", query="SELECT c from DVD c")
 })*/
 @Table(name = "collection_dvd")
-public class DVD {
-    public static final int START_SEQ = 100000;
-
-    @Id
-    @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1, initialValue = START_SEQ)
-    //    @Column(name = "id", unique = true, nullable = false, columnDefinition = "integer default nextval('global_seq')")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")
-    private long id;
-    public String name;
+public class DVD extends AbstractEntity {
 
     @Column(name = "date_time", nullable = false)
     @NotNull
@@ -77,9 +70,6 @@ public class DVD {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Producer producer;
 
-    public DVD() {
-    }
-
      public DVD(String name, String description, Genre genre, Country country, Producer producer) {
         this.dateTime = LocalDateTime.now();
         this.genre = genre;
@@ -90,11 +80,7 @@ public class DVD {
 
     }
 
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
+    public DVD() {
     }
 
     public LocalDateTime getDateTime() {
