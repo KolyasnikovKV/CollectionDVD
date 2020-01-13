@@ -43,7 +43,7 @@ public class CountryTest{
     }
 
     @Test
-    public void createdContryTest() throws Exception {
+    public void createdCountryTest() throws Exception {
         Country country = new Country("USA_TEST");
         // ОШИБКА Вот здесь NullPointerException countryRepository
         countryRepository.save(country);
