@@ -27,15 +27,17 @@ public class CountryTest{
     @Autowired
     //Почемуто бин не инжектиться
     private static CountryRepository countryRepository;
-    //private static MyService myService ;
+    private static MyService myService ;
     @PersistenceContext
     private EntityManager em;
 
 
     @BeforeClass
     public static void initEntityManager() throws Exception {
-        /*AbstractApplicationContext context = new AnnotationConfigApplicationContext(DataProvider.class);
-        MyService myService = (MyService) context.getBean(MyService.class);*/
+        //Пришлось делать так, попробую потом на service/controller
+        // так тест работает, а при прямом инжекте - нет
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(DataProvider.class);
+        myService = (MyService) context.getBean(MyService.class);
     }
 
     @AfterClass
@@ -45,9 +47,9 @@ public class CountryTest{
     @Test
     public void createdCountryTest() throws Exception {
         Country country = new Country("USA_TEST");
-        // ОШИБКА Вот здесь NullPointerException countryRepository
-        countryRepository.save(country);
-        //myService.countryRepository.save(country);
+        // ОШИБКА Вот здесь NullPointerException countryRepositor
+        //countryRepository.save(country);
+        myService.countryRepository.save(country);
     }
 
 }
