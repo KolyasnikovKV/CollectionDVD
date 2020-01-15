@@ -1,13 +1,9 @@
 package ru.kolyasnikovkv.collectiondvd;
 
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-import ru.kolyasnikovkv.collectiondvd.repository.*;
+import ru.kolyasnikovkv.collectiondvd.model.Country;
+import ru.kolyasnikovkv.collectiondvd.model.Dvd;
+import ru.kolyasnikovkv.collectiondvd.model.Genre;
+import ru.kolyasnikovkv.collectiondvd.model.Producer;
 import ru.kolyasnikovkv.collectiondvd.service.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
@@ -24,25 +20,25 @@ public class CollectionApp {
         myService.genreRepository.save(genre);
 
         Country country = new Country("USA");
-        myService.countryRepository.save(country);
+        myService.countryRepositoryJpa.save(country);
 
         Producer producer = new Producer("Spielberg");
         myService.producerRepository.save(producer);
 
-        DVD collectionDVD = new DVD("Moon", "Moon", genre, country, producer);
-        myService.dvdRepository.save(collectionDVD);
+        Dvd collectionDvd = new Dvd("Moon", "Moon", genre, country, producer);
+        myService.dvdRepository.save(collectionDvd);
 
-        Iterable<DVD> findDVDs = myService.dvdRepository.findAll();
-        System.out.println("DVD found with findAll():");
-        System.out.println("************************LIST DVD************************ ");
-        for (DVD dvd : findDVDs) {
+        Iterable<Dvd> findDVDs = myService.dvdRepository.findAll();
+        System.out.println("Dvd found with findAll():");
+        System.out.println("************************LIST Dvd************************ ");
+        for (Dvd dvd : findDVDs) {
             System.out.println(dvd);
             System.out.println(dvd.getProducer());
             System.out.println("------------------------");
         }
 
         /*Вот эта строка если раскоментировать выдает ОШИБКУ
-        DVDDTO findDVDdto = collectionDVDRepository.getDataInDto();*/
+        DvdDto findDVDdto = collectionDVDRepository.getDataInDto();*/
 
         /*org.hibernate.HibernateException: Got different size of tuples and aliases
 	at org.hibernate.jpa.spi.NativeQueryTupleTransformer$NativeTupleImpl.<init>(NativeQueryTupleTransformer.java:68)
@@ -62,7 +58,7 @@ public class CollectionApp {
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498) */
 
-        /*for (DVDDTO dvd : findDVDdto) {
+        /*for (DvdDto dvd : findDVDdto) {
             System.out.println(dvd);
             System.out.println("------------------------");
         }*/

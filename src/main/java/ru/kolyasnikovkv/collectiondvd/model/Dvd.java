@@ -1,9 +1,8 @@
-package ru.kolyasnikovkv.collectiondvd.repository;
+package ru.kolyasnikovkv.collectiondvd.model;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import ru.kolyasnikovkv.collectiondvd.dto.DVDDTO;
-import ru.kolyasnikovkv.collectiondvd.generics.AbstractEntity;
+import ru.kolyasnikovkv.collectiondvd.dto.DvdDto;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -23,7 +22,7 @@ import java.time.LocalTime;
         name="mapDataInDto",
         classes = {
                 @ConstructorResult(
-                        targetClass= DVDDTO.class,
+                        targetClass= DvdDto.class,
                         columns = { @ColumnResult(name = "id", type = Long.class),
                                     @ColumnResult(name = "name", type = String.class) }
                 )
@@ -37,10 +36,10 @@ import java.time.LocalTime;
 )
 
 /*@NamedQueries({
-        @NamedQuery(name="DVD.findAll", query="SELECT c from DVD c")
+        @NamedQuery(name="Dvd.findAll", query="SELECT c from Dvd c")
 })*/
 @Table(name = "collection_dvd")
-public class DVD extends AbstractEntity {
+public class Dvd extends AbstractEntity {
 
     @Column(name = "date_time", nullable = false)
     @NotNull
@@ -70,7 +69,7 @@ public class DVD extends AbstractEntity {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Producer producer;
 
-     public DVD(String name, String description, Genre genre, Country country, Producer producer) {
+     public Dvd(String name, String description, Genre genre, Country country, Producer producer) {
         this.dateTime = LocalDateTime.now();
         this.genre = genre;
         this.country = country;
@@ -80,7 +79,7 @@ public class DVD extends AbstractEntity {
 
     }
 
-    public DVD() {
+    public Dvd() {
     }
 
     public LocalDateTime getDateTime() {
@@ -125,7 +124,7 @@ public class DVD extends AbstractEntity {
 
     @Override
     public String toString() {
-        return "DVD {" +
+        return "Dvd {" +
                 "id=" + id +
                 ", dateTime=" + dateTime +
                 ", description='" + description + '\'' +

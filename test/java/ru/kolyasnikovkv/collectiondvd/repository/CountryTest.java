@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
 import ru.kolyasnikovkv.collectiondvd.DataProvider;
+import ru.kolyasnikovkv.collectiondvd.model.Country;
+import ru.kolyasnikovkv.collectiondvd.repository.datajpa.CrudCountryRepository;
 import ru.kolyasnikovkv.collectiondvd.service.MyService;
 
 import javax.persistence.EntityManager;
@@ -26,7 +26,7 @@ public class CountryTest{
 
     @Autowired
     //Почемуто бин не инжектиться
-    private static CountryRepository countryRepository;
+    private static CountryRepository countryRepositoryJpa;
     private static MyService myService ;
     @PersistenceContext
     private EntityManager em;
@@ -48,8 +48,8 @@ public class CountryTest{
     public void createdCountryTest() throws Exception {
         Country country = new Country("USA_TEST");
         // ОШИБКА Вот здесь NullPointerException countryRepositor
-        //countryRepository.save(country);
-        myService.countryRepository.save(country);
+        //countryRepositoryJpa.save(country);
+        myService.countryRepositoryJpa.save(country);
     }
 
 }

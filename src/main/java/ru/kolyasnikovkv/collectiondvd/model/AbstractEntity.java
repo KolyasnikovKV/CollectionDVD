@@ -1,4 +1,4 @@
-package ru.kolyasnikovkv.collectiondvd.generics;
+package ru.kolyasnikovkv.collectiondvd.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -7,7 +7,7 @@ import java.io.Serializable;
 public abstract class AbstractEntity implements Serializable {
     public static final int START_SEQ = 100000;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -27,7 +27,7 @@ public abstract class AbstractEntity implements Serializable {
     @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1, initialValue = START_SEQ)
     //    @Column(name = "id", unique = true, nullable = false, columnDefinition = "integer default nextval('global_seq')")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")
-    protected long id;
+    protected Long id;
     public String name;
 
 }

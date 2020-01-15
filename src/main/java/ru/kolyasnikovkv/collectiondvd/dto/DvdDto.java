@@ -1,21 +1,21 @@
 package ru.kolyasnikovkv.collectiondvd.dto;
 import java.io.Serializable;
 
-public class DVDDTO implements Serializable {
+public class DvdDto implements Serializable {
     private Long id;
     private String name;
 
-    public DVDDTO(long id, String name) {
+    public DvdDto(long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public DVDDTO() {
+    public DvdDto() {
     }
 
     @Override
     public String toString() {
-        return "DVD {" +
+        return "Dvd {" +
                 "id=" + id +
                 ", name=" + name + '}';
     }

@@ -1,6 +1,6 @@
-package ru.kolyasnikovkv.collectiondvd.repository;
+package ru.kolyasnikovkv.collectiondvd.model;
 
-import ru.kolyasnikovkv.collectiondvd.generics.AbstractEntity;
+import ru.kolyasnikovkv.collectiondvd.model.AbstractEntity;
 
 import javax.persistence.*;
 

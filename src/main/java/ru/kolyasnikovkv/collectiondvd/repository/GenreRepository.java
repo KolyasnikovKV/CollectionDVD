@@ -1,9 +1,7 @@
 package ru.kolyasnikovkv.collectiondvd.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import ru.kolyasnikovkv.collectiondvd.generics.CommonRepository;
+import ru.kolyasnikovkv.collectiondvd.model.AbstractInterfaceModel;
+import ru.kolyasnikovkv.collectiondvd.model.Genre;
 
-import java.util.List;
-
-public interface GenreRepository extends CommonRepository<Genre> {
+public interface GenreRepository extends AbstractInterfaceModel<Genre> {
 }

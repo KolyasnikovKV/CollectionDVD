@@ -1,9 +1,7 @@
 package ru.kolyasnikovkv.collectiondvd.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import ru.kolyasnikovkv.collectiondvd.generics.CommonRepository;
+import ru.kolyasnikovkv.collectiondvd.model.AbstractInterfaceModel;
+import ru.kolyasnikovkv.collectiondvd.model.Producer;
 
-import java.util.List;
-
-public interface ProducerRepository extends CommonRepository<Producer> {
+public interface ProducerRepository extends AbstractInterfaceModel<Producer> {
 }
