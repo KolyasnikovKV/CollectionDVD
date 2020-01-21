@@ -1,5 +1,7 @@
 package ru.kolyasnikovkv.collectiondvd.model;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import ru.kolyasnikovkv.collectiondvd.dto.DvdDto;
@@ -15,6 +17,7 @@ import javax.persistence.SqlResultSetMapping;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.LongSummaryStatistics;
 
 
 @Entity
@@ -39,7 +42,14 @@ import java.time.LocalTime;
         @NamedQuery(name="Dvd.findAll", query="SELECT c from Dvd c")
 })*/
 @Table(name = "collection_dvd")
-public class Dvd extends AbstractEntity {
+@Getter
+@Setter
+public class Dvd extends AbstractEntity<Long> {
+
+    @Column(name = "name", nullable = false)
+    @NotBlank
+    @Size(min = 2, max = 120)
+    private String name;
 
     @Column(name = "date_time", nullable = false)
     @NotNull
@@ -79,47 +89,18 @@ public class Dvd extends AbstractEntity {
 
     }
 
-    public Dvd() {
-    }
-
+    public Dvd() {    }
     public LocalDateTime getDateTime() {
         return dateTime;
     }
-
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
     }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public LocalDate getDate() {
         return dateTime.toLocalDate();
     }
-
     public LocalTime getTime() {
         return dateTime.toLocalTime();
-    }
-
-    public Country getCountry() {
-        return country;
-    }
-
-    public void setCountry(Country country) {
-        this.country = country;
-    }
-
-    public Producer getProducer() {
-        return producer;
-    }
-
-    public void setProducer(Producer producer) {
-        this.producer = producer;
     }
 
     @Override
@@ -129,5 +110,15 @@ public class Dvd extends AbstractEntity {
                 ", dateTime=" + dateTime +
                 ", description='" + description + '\'' +
                 '}';
+    }
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long aLong) {
+
     }
 }

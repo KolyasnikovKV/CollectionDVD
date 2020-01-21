@@ -12,7 +12,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ru.kolyasnikovkv.collectiondvd.DataProvider;
 import ru.kolyasnikovkv.collectiondvd.model.Country;
-import ru.kolyasnikovkv.collectiondvd.repository.datajpa.CrudCountryRepository;
 import ru.kolyasnikovkv.collectiondvd.service.MyService;
 
 import javax.persistence.EntityManager;
@@ -26,7 +25,6 @@ public class CountryTest{
 
     @Autowired
     //Почемуто бин не инжектиться
-    private static CountryRepository countryRepositoryJpa;
     private static MyService myService ;
     @PersistenceContext
     private EntityManager em;
@@ -46,7 +44,7 @@ public class CountryTest{
 
     @Test
     public void createdCountryTest() throws Exception {
-        Country country = new Country("USA_TEST");
+        Country country = new Country("USA_TEST2");
         // ОШИБКА Вот здесь NullPointerException countryRepositor
         //countryRepositoryJpa.save(country);
         myService.countryRepositoryJpa.save(country);

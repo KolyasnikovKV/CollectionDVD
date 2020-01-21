@@ -2,25 +2,27 @@ package ru.kolyasnikovkv.collectiondvd.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import ru.kolyasnikovkv.collectiondvd.repository.CountryRepository;
-import ru.kolyasnikovkv.collectiondvd.repository.DvdRepository;
-import ru.kolyasnikovkv.collectiondvd.repository.GenreRepository;
-import ru.kolyasnikovkv.collectiondvd.repository.ProducerRepository;
+import ru.kolyasnikovkv.collectiondvd.model.*;
+import ru.kolyasnikovkv.collectiondvd.repository.datajpa.CrudCountryJpaDao;
+import ru.kolyasnikovkv.collectiondvd.repository.datajpa.CrudDvdJpaDao;
+import ru.kolyasnikovkv.collectiondvd.repository.datajpa.CrudGenreJpaDao;
+import ru.kolyasnikovkv.collectiondvd.repository.datajpa.CrudProducerJpaDao;
+
 
 @Component
 public class MyService{
 
     // ОШИБКА Здесь я попытался создать свзяь с бином и передать обобщенный тип, но что с ошибкой валиться
     @Autowired
-    public CountryRepository countryRepositoryJpa;
+    public CrudCountryJpaDao countryRepositoryJpa;
 
     @Autowired
-    public GenreRepository genreRepository;
+    public CrudGenreJpaDao genreRepository;
 
     @Autowired
-    public DvdRepository dvdRepository;
+    public CrudDvdJpaDao dvdRepository;
 
     @Autowired
-    public ProducerRepository producerRepository;
+    public CrudProducerJpaDao producerRepository;
 
 }

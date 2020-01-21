@@ -28,14 +28,14 @@ public class CollectionApp {
         Dvd collectionDvd = new Dvd("Moon", "Moon", genre, country, producer);
         myService.dvdRepository.save(collectionDvd);
 
-        Iterable<Dvd> findDVDs = myService.dvdRepository.findAll();
+        /*Iterable<Dvd> findDVDs = myService.dvdRepository.findAll();
         System.out.println("Dvd found with findAll():");
         System.out.println("************************LIST Dvd************************ ");
         for (Dvd dvd : findDVDs) {
             System.out.println(dvd);
             System.out.println(dvd.getProducer());
             System.out.println("------------------------");
-        }
+        }*/
 
         /*Вот эта строка если раскоментировать выдает ОШИБКУ
         DvdDto findDVDdto = collectionDVDRepository.getDataInDto();*/
