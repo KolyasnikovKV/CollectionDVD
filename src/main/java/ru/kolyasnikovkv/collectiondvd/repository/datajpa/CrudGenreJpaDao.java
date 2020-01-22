@@ -13,7 +13,7 @@ import java.util.List;
 public class CrudGenreJpaDao implements CrudDao<Genre, Long> {
 
   @Autowired
-  private JpaRepository<Genre, Long> jpaReposotiry;
+  private CrudRepositoryGenreJpaDao jpaReposotiry;
 
   @Override
   public Genre save(Genre genre) {

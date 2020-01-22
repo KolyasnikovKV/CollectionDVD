@@ -1,19 +1,18 @@
 package ru.kolyasnikovkv.collectiondvd.repository.datajpa;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import ru.kolyasnikovkv.collectiondvd.model.Country;
 import ru.kolyasnikovkv.collectiondvd.model.CrudDao;
+import ru.kolyasnikovkv.collectiondvd.repository.datajpa.CrudRepositoryCountryJpaDao;
 
 @Repository
 public class CrudCountryJpaDao implements CrudDao<Country, Long> {
 
-  @Autowired
-  private JpaRepository<Country, Long> jpaReposotiry;
+  private final CrudRepositoryCountryJpaDao jpaReposotiry;
 
-
+  public CrudCountryJpaDao(CrudRepositoryCountryJpaDao jpaReposotiry) {
+    this.jpaReposotiry = jpaReposotiry;
+  }
   @Override
   public Country save(Country country) {
     return jpaReposotiry.save(country);

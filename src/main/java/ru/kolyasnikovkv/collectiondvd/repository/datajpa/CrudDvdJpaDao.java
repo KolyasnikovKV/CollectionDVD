@@ -11,10 +11,11 @@ import ru.kolyasnikovkv.collectiondvd.model.Dvd;
 @Repository
 public class CrudDvdJpaDao implements CrudDao<Dvd, Long> {
 
-    @Autowired
-    private JpaRepository<Dvd, Long> jpaReposotiry;
+    private final CrudRepositoryDvdJpaDao jpaReposotiry;
 
-
+    public CrudDvdJpaDao(CrudRepositoryDvdJpaDao jpaReposotiry) {
+        this.jpaReposotiry = jpaReposotiry;
+    }
     @Override
     public Dvd save(Dvd dvd) {
         return jpaReposotiry.save(dvd);

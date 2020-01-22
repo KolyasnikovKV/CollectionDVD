@@ -12,7 +12,7 @@ import java.util.List;
 public class CrudProducerJpaDao implements CrudDao<Producer, Long> {
 
     @Autowired
-    private JpaRepository<Producer, Long> jpaReposotiry;
+    private CrudRepositoryProducerJpaDao jpaReposotiry;
 
     @Override
     public Producer save(Producer producer) {
