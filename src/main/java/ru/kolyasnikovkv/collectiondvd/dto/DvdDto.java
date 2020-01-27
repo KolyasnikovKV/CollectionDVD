@@ -1,38 +1,23 @@
 package ru.kolyasnikovkv.collectiondvd.dto;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.io.Serializable;
 
+@Getter // сгенерировать get'еры для всех полей
+@Setter // сгенерировать set'еры для всех полей
+@NoArgsConstructor // сгенерировать конструктор без параметров
+@AllArgsConstructor // сгенерировать конструктор со всеми параметрами
 public class DvdDto implements Serializable {
     private Long id;
     private String name;
 
-    public DvdDto(long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public DvdDto() {
-    }
-
-    @Override
+   @Override
     public String toString() {
         return "Dvd {" +
                 "id=" + id +
                 ", name=" + name + '}';
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

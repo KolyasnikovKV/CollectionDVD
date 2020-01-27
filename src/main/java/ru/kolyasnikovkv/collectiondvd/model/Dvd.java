@@ -1,6 +1,8 @@
 package ru.kolyasnikovkv.collectiondvd.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -42,8 +44,10 @@ import java.util.LongSummaryStatistics;
         @NamedQuery(name="Dvd.findAll", query="SELECT c from Dvd c")
 })*/
 @Table(name = "collection_dvd")
-@Getter
-@Setter
+@Getter // сгенерировать get'еры для всех полей
+@Setter // сгенерировать set'еры для всех полей
+@NoArgsConstructor // сгенерировать конструктор без параметров
+@AllArgsConstructor // сгенерировать конструктор со всеми параметрами
 public class Dvd extends AbstractEntity<Long> {
 
     @Column(name = "name", nullable = false)
@@ -79,17 +83,6 @@ public class Dvd extends AbstractEntity<Long> {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Producer producer;
 
-     public Dvd(String name, String description, Genre genre, Country country, Producer producer) {
-        this.dateTime = LocalDateTime.now();
-        this.genre = genre;
-        this.country = country;
-        this.producer = producer;
-        this.description = description;
-        this.name = name;
-
-    }
-
-    public Dvd() {    }
     public LocalDateTime getDateTime() {
         return dateTime;
     }

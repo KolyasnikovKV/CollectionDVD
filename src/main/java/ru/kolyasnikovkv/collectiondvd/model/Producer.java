@@ -1,6 +1,8 @@
 package ru.kolyasnikovkv.collectiondvd.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ru.kolyasnikovkv.collectiondvd.model.AbstractEntity;
 
@@ -10,8 +12,10 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "producers")
-@Getter
-@Setter
+@Getter // сгенерировать get'еры для всех полей
+@Setter // сгенерировать set'еры для всех полей
+@NoArgsConstructor // сгенерировать конструктор без параметров
+@AllArgsConstructor // сгенерировать конструктор со всеми параметрами
 public class Producer  extends AbstractEntity<Long> {
 
 
@@ -19,14 +23,6 @@ public class Producer  extends AbstractEntity<Long> {
     @NotBlank
     @Size(min = 2, max = 120)
     private String name;
-
-    public Producer(String name) {
-        super();
-        this.name = name;
-    }
-
-    public Producer() {
-    }
 
     @Override
     public String toString() {
