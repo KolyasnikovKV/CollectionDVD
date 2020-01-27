@@ -16,6 +16,7 @@ import ru.kolyasnikovkv.collectiondvd.service.MyService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.apache.log4j.Logger;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 //@RunWith(SpringRunner.class)
@@ -29,6 +30,8 @@ public class CountryTest{
     @PersistenceContext
     private EntityManager em;
 
+    final static Logger logger = Logger.getLogger(CountryTest.class);
+
 
     @BeforeClass
     public static void initEntityManager() throws Exception {
@@ -36,6 +39,11 @@ public class CountryTest{
         // так тест работает, а при прямом инжекте - нет
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(DataProvider.class);
         myService = (MyService) context.getBean(MyService.class);
+        logger.debug("debug"); // all
+        logger.info("info"); // except debug
+        logger.warn("warn"); // except debug and info
+        logger.error("error"); // except debug, info and warn
+        logger.fatal("fatal"); // only fatal
     }
 
     @AfterClass
@@ -44,7 +52,7 @@ public class CountryTest{
 
     @Test
     public void createdCountryTest() throws Exception {
-        Country country = new Country("USA_TEST2");
+        Country country = new Country(null, "USA_TEST2");
         // ОШИБКА Вот здесь NullPointerException countryRepositor
         //countryRepositoryJpa.save(country);
         myService.countryRepositoryJpa.save(country);

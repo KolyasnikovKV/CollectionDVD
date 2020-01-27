@@ -19,14 +19,14 @@ public class CollectionApp {
         Genre genre = new Genre("Triller");
         myService.genreRepository.save(genre);
 
-        Country country = new Country("USA");
+        Country country = new Country(null, "USA");
         myService.countryRepositoryJpa.save(country);
 
         Producer producer = new Producer("Spielberg");
         myService.producerRepository.save(producer);
 
-        Dvd collectionDvd = new Dvd("Moon", "Moon", genre, country, producer);
-        myService.dvdRepository.save(collectionDvd);
+        /*Dvd collectionDvd = new Dvd("Moon", "Moon", genre, country, producer);
+        myService.dvdRepository.save(collectionDvd);*/
 
         /*Iterable<Dvd> findDVDs = myService.dvdRepository.findAll();
         System.out.println("Dvd found with findAll():");
