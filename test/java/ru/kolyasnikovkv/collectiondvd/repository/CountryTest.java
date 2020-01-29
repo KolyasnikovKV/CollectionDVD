@@ -20,7 +20,7 @@ import org.apache.log4j.Logger;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 //@RunWith(SpringRunner.class)
-@EnableJpaRepositories(basePackages={"ru.kolyasnikovkv.collectiondvd.repository"})
+@EnableJpaRepositories(basePackages={"ru.kolyasnikovkv.collectiondvd"})
 @ContextConfiguration(classes = {DataProvider.class})
 public class CountryTest{
 
