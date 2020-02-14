@@ -1,5 +1,7 @@
 package ru.kolyasnikovkv.collectiondvd.service;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -11,13 +13,11 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class CountryService {
 
     private final CrudCountryJpaDao repository;
-
-    public CountryService(CrudCountryJpaDao repository) {
-        this.repository = repository;
-    }
+    private final Converter<Country, CountryDto> converter;
 
     public Country get(Long id) {
         return repository.findById(id);

@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Setter // сгенерировать set'еры для всех полей
 @NoArgsConstructor // сгенерировать конструктор без параметров
 @AllArgsConstructor // сгенерировать конструктор со всеми параметрами
-public abstract class AbstractEntity<ID> implements Serializable, WithId<ID> {
+public abstract class AbstractEntity<ID extends Serializable> implements Serializable, WithId<ID> {
     public static final int START_SEQ = 100000;
     @Id
     @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1, initialValue = START_SEQ)
