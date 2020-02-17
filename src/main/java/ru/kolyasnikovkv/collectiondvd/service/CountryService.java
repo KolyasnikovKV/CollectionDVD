@@ -9,8 +9,12 @@ import ru.kolyasnikovkv.collectiondvd.dto.CountryDto;
 import ru.kolyasnikovkv.collectiondvd.model.Country;
 import ru.kolyasnikovkv.collectiondvd.repository.datajpa.CrudCountryJpaDao;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static ru.kolyasnikovkv.collectiondvd.util.ValidationUtil.checkNotFoundWithId;
 
 @Service
 @RequiredArgsConstructor
@@ -18,39 +22,34 @@ public class CountryService {
 
     private final CrudCountryJpaDao repository;
     private final Converter<Country, CountryDto> converter;
+    private final Converter<CountryDto, Country> converterDto;
 
-    public Country get(Long id) {
-        return repository.findById(id);
-    }
+   /* public List<AccountDTO> listByUser(Long userId) {
+        return accountRepository.findAccountsByOwnerId(userId)
+                .stream()
+                .map(converter::convert)
+                .collect(Collectors.toList());
+
+        public Country get(Long id) {
+        Country account = repository.findById(id);
+        return checkNotFoundWithId(account, id);
+    }*/
 
     public void delete(Long id) {
-        repository.deleteById(id);
+        checkNotFoundWithId(repository.delete(id), id);
     }
 
-    public void update(CountryDto countryDto) {
-        long id = countryDto.getId();
-        // Как правильно прочекать что id не null
-        Country country= repository.findById(id);
-        repository.save(updateFromDto(country, countryDto));
+    public CountryDto create(CountryDto countryDto){
+        Country country = converterDto.convert(countryDto);
+        country = repository.save(country);
+        return converter.convert(country);
     }
 
-    public Country create(CountryDto countryDto) {
-        //Assert.notNull(, "must not be null");
-        return repository.save(createNewEntityFromDto(countryDto));
-    }
-
-    public static CountryDto createNewDtoFromEntity(Country country) {
-
-        return new CountryDto(country.getId(), country.getName());
-    }
-
-    public static Country createNewEntityFromDto(CountryDto countryDto) {
-        return new Country(countryDto.getId(), countryDto.getName());
-    }
-
-    public static Country updateFromDto(Country country, CountryDto countryDto) {
-        country.setId(countryDto.getId());
+    public CountryDto update(CountryDto countryDto) {
+        Country country = repository.findById(countryDto.getId());
+        country = checkNotFoundWithId(country, countryDto.getId());
         country.setName(countryDto.getName());
-        return country;
+        country = repository.save(country);
+        return converter.convert(country);
     }
 }

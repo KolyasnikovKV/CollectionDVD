@@ -20,17 +20,12 @@ public class CrudProducerJpaDao implements CrudDao<Producer, Long> {
     }
 
     @Override
-    public Producer update(Producer producer) {
-        return jpaReposotiry.save(producer);
-    }
-
-    @Override
     public Producer findById(Long id) {
         return jpaReposotiry.findById(id).get();
     }
 
     @Override
-    public Boolean deleteById(Long id) {
+    public boolean delete(Long id) {
         jpaReposotiry.deleteById(id);
         return true;
     }

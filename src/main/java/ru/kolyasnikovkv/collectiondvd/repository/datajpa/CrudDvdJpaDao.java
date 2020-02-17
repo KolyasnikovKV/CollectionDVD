@@ -22,17 +22,12 @@ public class CrudDvdJpaDao implements CrudDao<Dvd, Long> {
     }
 
     @Override
-    public Dvd update(Dvd dvd) {
-        return jpaReposotiry.save(dvd);
-    }
-
-    @Override
     public Dvd findById(Long id) {
         return jpaReposotiry.findById(id).get();
     }
 
     @Override
-    public Boolean deleteById(Long id) {
+    public boolean delete(Long id) {
         jpaReposotiry.deleteById(id);
         return true;
     }

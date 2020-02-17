@@ -5,12 +5,10 @@ import java.util.Optional;
 
 public interface CrudDao<T, ID> {
 
-    T save(T object);
-
-    T update(T object);
-
     T findById(ID id);
 
-    Boolean deleteById(ID id);
+    T save(T object);
+
+    boolean delete(ID id);
 
 }

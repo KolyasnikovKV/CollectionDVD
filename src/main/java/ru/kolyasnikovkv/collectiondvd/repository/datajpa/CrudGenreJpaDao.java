@@ -20,10 +20,6 @@ public class CrudGenreJpaDao implements CrudDao<Genre, Long> {
     return jpaReposotiry.save(genre);
   }
 
-  @Override
-  public Genre update(Genre genre) {
-    return jpaReposotiry.save(genre);
-  }
 
   @Override
   public Genre findById(Long id) {
@@ -31,7 +27,7 @@ public class CrudGenreJpaDao implements CrudDao<Genre, Long> {
   }
 
   @Override
-  public Boolean deleteById(Long id) {
+  public boolean delete(Long id) {
     jpaReposotiry.deleteById(id);
     return true;
   }
