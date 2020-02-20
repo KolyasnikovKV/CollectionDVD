@@ -8,7 +8,7 @@ import java.io.Serializable;
 @NoArgsConstructor // сгенерировать конструктор без параметров
 @AllArgsConstructor // сгенерировать конструктор со всеми параметрами
 @EqualsAndHashCode
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class GenreDto implements Serializable {
     private Long id;
     private String name;

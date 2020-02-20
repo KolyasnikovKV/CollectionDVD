@@ -1,7 +1,6 @@
 package ru.kolyasnikovkv.collectiondvd;
 
 import ru.kolyasnikovkv.collectiondvd.model.Country;
-import ru.kolyasnikovkv.collectiondvd.model.Dvd;
 import ru.kolyasnikovkv.collectiondvd.model.Genre;
 import ru.kolyasnikovkv.collectiondvd.model.Producer;
 import ru.kolyasnikovkv.collectiondvd.service.*;

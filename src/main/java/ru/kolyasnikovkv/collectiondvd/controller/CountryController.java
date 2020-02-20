@@ -3,15 +3,7 @@ package ru.kolyasnikovkv.collectiondvd.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-import ru.sapientisat.api.converter.AccountToResponseConverter;
-import ru.sapientisat.api.json.AccountRequest;
-import ru.sapientisat.api.json.AccountResponse;
-import ru.sapientisat.entity.Account;
-import ru.sapientisat.repository.AccountRepository;
-import ru.sapientisat.repository.UserRepository;
-import ru.sapientisat.security.CustomUserDetails;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,7 +15,7 @@ import static org.springframework.http.ResponseEntity.status;
 @RequestMapping("/api")
 @RequiredArgsConstructor
 public class CountryController {
-    private final AccountRepository accountRepository;
+   /*private final AccountRepository accountRepository;
     private final UserRepository userRepository;
     private final AccountToResponseConverter converter;
 
@@ -81,4 +73,5 @@ public class CountryController {
         }
         return status(HttpStatus.NO_CONTENT).build();
     }
+    */
 }
