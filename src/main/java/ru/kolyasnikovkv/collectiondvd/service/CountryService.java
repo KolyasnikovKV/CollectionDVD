@@ -50,7 +50,7 @@ public class CountryService {
 
     public CountryDto update(CountryDto countryDto) {
         Country country = repository.findById(countryDto.getId());
-        country = checkNotFoundWithId(country, countryDto.getId());
+        //country = checkNotFoundWithId(country, countryDto.getId());
         country.setName(countryDto.getName());
         country = repository.save(country);
         return converter.convert(country);

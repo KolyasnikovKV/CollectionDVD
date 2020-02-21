@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ru.kolyasnikovkv.collectiondvd.controller.CountryController;
@@ -67,7 +68,7 @@ public class CountryTest{
         //CountryDto countryDto = new CountryDto(null, "USA_TEST2");
         // ОШИБКА Вот здесь NullPointerException countryRepositor
         //countryRepositoryJpa.save(country);
-        CountryDto countryDto = myService.get((long)100001);
+        ResponseEntity<CountryDto> countryDto = myService.get((long)100001);
         logger.info(countryDto);
     }
 }

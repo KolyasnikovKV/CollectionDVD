@@ -27,13 +27,23 @@ public class CountryController {
 
    @GetMapping("/{id}")
    @ResponseBody
-    public CountryDto get(@PathVariable Long id) {
+    public ResponseEntity<CountryDto> get(@PathVariable Long id) {
        CountryDto countryDto = countryService.get(id);
-       return countryDto;
+       return ok(countryDto);
        /*ObjectMapper objectMapper = new ObjectMapper();
        String json = objectMapper.writeValueAsString(result);
        return json;*/
     }
+
+    @PostMapping(value ="/add", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity<CountryDto> add(@RequestBody CountryDto request) {
+        //if (!accountRepository.existsByNameAndOwnerId(request.getName(), userDetails.getId())) {
+        CountryDto countryDto = countryService.create(request);
+        return ok(countryDto);
+    }
+     ///return status(HttpStatus.BAD_REQUEST).build();
+    //}
 
    /*private final AccountRepository accountRepository;
     private final UserRepository userRepository;
