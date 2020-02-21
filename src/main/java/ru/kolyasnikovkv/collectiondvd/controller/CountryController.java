@@ -15,24 +15,28 @@ import java.util.stream.Collectors;
 
 import static org.springframework.http.ResponseEntity.ok;
 import static org.springframework.http.ResponseEntity.status;
-/*
+
 @RestController
 @RequestMapping(value = CountryController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
 public class CountryController {
 
-    static final String REST_URL = "/rest/country";
-   /*private final CountryService countryService;
+   static final String REST_URL = "/rest/country";
+   private final CountryService countryService;
 
 
    @GetMapping("/{id}")
    @ResponseBody
     public CountryDto get(@PathVariable Long id) {
-        return countryService.get(id);
+       CountryDto countryDto = countryService.get(id);
+       return countryDto;
+       /*ObjectMapper objectMapper = new ObjectMapper();
+       String json = objectMapper.writeValueAsString(result);
+       return json;*/
     }
 
    /*private final AccountRepository accountRepository;
-   private final UserRepository userRepository;
+    private final UserRepository userRepository;
     private final AccountToResponseConverter converter;
 
     @GetMapping("/accounts")
@@ -89,6 +93,5 @@ public class CountryController {
         }
         return status(HttpStatus.NO_CONTENT).build();
     }
-    *//*
+    */
 }
-*/

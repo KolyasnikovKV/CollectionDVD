@@ -17,7 +17,11 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
 
 @Configuration
-@ComponentScan({"ru.kolyasnikovkv.collectiondvd.repository","ru.kolyasnikovkv.collectiondvd.model"})
+@ComponentScan({"ru.kolyasnikovkv.collectiondvd.repository",
+        "ru.kolyasnikovkv.collectiondvd.model",
+        "ru.kolyasnikovkv.collectiondvd.service",
+        "ru.kolyasnikovkv.collectiondvd.converter",
+        "ru.kolyasnikovkv.collectiondvd.controller"})
 @EnableJpaRepositories
 @PropertySource("postgres.properties")
 public class DataProvider {

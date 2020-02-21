@@ -1,4 +1,4 @@
-package ru.kolyasnikovkv.collectiondvd.configurationJPA;
+package ru.kolyasnikovkv.collectiondvd.configuration;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -17,8 +17,12 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
 
 @Configuration
-@ComponentScan("ru.kolyasnikovkv.collectiondvd")
-@EnableJpaRepositories
+@ComponentScan({"ru.kolyasnikovkv.collectiondvd.repository.datajpa",
+        "ru.kolyasnikovkv.collectiondvd.model",
+        "ru.kolyasnikovkv.collectiondvd.service",
+        "ru.kolyasnikovkv.collectiondvd.converter",
+        "ru.kolyasnikovkv.collectiondvd.controller"})
+@EnableJpaRepositories("ru.kolyasnikovkv.collectiondvd.repository.datajpa")
 @PropertySource("classpath:/postgres.properties")
 public class DataProvider {
 

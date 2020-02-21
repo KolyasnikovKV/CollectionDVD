@@ -10,6 +10,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import ru.kolyasnikovkv.collectiondvd.controller.CountryController;
 import ru.kolyasnikovkv.collectiondvd.dto.CountryDto;
 import ru.kolyasnikovkv.collectiondvd.model.Country;
 import ru.kolyasnikovkv.collectiondvd.repository.datajpa.CrudRepositoryCountryJpaDao;
@@ -28,7 +29,7 @@ public class CountryTest{
 
     @Autowired
     //Почемуто бин не инжектиться
-    private static CrudRepositoryCountryJpaDao myService ;
+    private static CountryController myService ;
 
     //@PersistenceContext
     //private EntityManager em;
@@ -41,7 +42,7 @@ public class CountryTest{
         //Пришлось делать так, попробую потом на service/controller
         // так тест работает, а при прямом инжекте - нет
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(DataProvider.class);
-        myService = (CrudRepositoryCountryJpaDao) context.getBean(CrudRepositoryCountryJpaDao.class);
+        myService = (CountryController) context.getBean(CountryController.class);
         logger.debug("debug"); // all
         logger.info("info"); // except debug
         logger.warn("warn"); // except debug and info
@@ -53,12 +54,20 @@ public class CountryTest{
     public static void closeEntityManager(){
     }
 
-    @Test
+    /*@Test
     public void createdCountryTest() throws Exception {
-        Country countryDto = new Country(null, "USA_TEST2");
+        CountryDto countryDto = new CountryDto(null, "USA_TEST2");
         // ОШИБКА Вот здесь NullPointerException countryRepositor
         //countryRepositoryJpa.save(country);
-        myService.save(countryDto);
-    }
+        myService.create(countryDto);
+    }*/
 
+    @Test
+    public void getCountry() throws Exception {
+        //CountryDto countryDto = new CountryDto(null, "USA_TEST2");
+        // ОШИБКА Вот здесь NullPointerException countryRepositor
+        //countryRepositoryJpa.save(country);
+        CountryDto countryDto = myService.get((long)100001);
+        logger.info(countryDto);
+    }
 }

@@ -34,7 +34,7 @@ public class CountryService {
 */
     public CountryDto get(Long id) {
         Country country = repository.findById(id);
-        checkNotFoundWithId(country, id);
+       // checkNotFoundWithId(country, id);
         return converter.convert(country);
     }
 

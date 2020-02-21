@@ -1,5 +1,6 @@
 package ru.kolyasnikovkv.collectiondvd.util;
 
+import javassist.NotFoundException;
 import org.slf4j.Logger;
 import ru.kolyasnikovkv.collectiondvd.model.WithId;
 import ru.kolyasnikovkv.collectiondvd.util.exception.IllegalRequestDataException;
@@ -25,13 +26,13 @@ public class ValidationUtil {
         checkNotFound(object != null, msg);
         return object;
     }
-
-    /*public static void checkNotFound(boolean found, String arg) {
+/*
+    public static void checkNotFound(boolean found, String arg) {
         if (!found) {
             throw new NotFoundException(arg);
         }
-    }*/
-
+    }
+*/
     public static void checkNew(WithId bean) {
         if (!bean.isNew()) {
             throw new IllegalRequestDataException(bean + " must be new (id=null)");

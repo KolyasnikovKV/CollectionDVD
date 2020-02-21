@@ -13,7 +13,7 @@ import org.springframework.web.servlet.DispatcherServlet;
 import javax.servlet.*;
 import java.util.EnumSet;
 
-public class ResumeWebApplicationInitializer implements WebApplicationInitializer {
+public class WebApplication implements WebApplicationInitializer {
 
 
 	private static final String DISPATCHER_SERVLET_NAME = "dispatcher";
