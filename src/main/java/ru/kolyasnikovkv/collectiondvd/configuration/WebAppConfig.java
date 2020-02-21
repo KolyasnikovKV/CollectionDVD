@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("ru.kolyasnikovkv.collectiondvd.controller")
+@ComponentScan({"ru.kolyasnikovkv.collectiondvd.configuration", "ru.kolyasnikovkv.collectiondvd.controller"})
 public class WebAppConfig extends WebMvcConfigurerAdapter {
 
     @Override

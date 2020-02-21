@@ -1,4 +1,4 @@
-package ru.kolyasnikovkv.collectiondvd.configuration;
+package ru.kolyasnikovkv.collectiondvd.configurationJPA;
 
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +19,11 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 import java.util.List;
-/*
+
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({ "ru.kolyasnikovkv.collectiondvd.controller"})
+@ComponentScan({ "ru.kolyasnikovkv.collectiondvd"})
 @EnableSpringDataWebSupport
 public class MVCConfig extends WebMvcConfigurerAdapter {
 	
@@ -73,6 +73,5 @@ public class MVCConfig extends WebMvcConfigurerAdapter {
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
- *//*
+ */
 }
-    */

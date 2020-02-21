@@ -1,4 +1,4 @@
-package ru.kolyasnikovkv.collectiondvd;
+package ru.kolyasnikovkv.collectiondvd.repository;
 
 import ru.kolyasnikovkv.collectiondvd.model.Country;
 import ru.kolyasnikovkv.collectiondvd.model.Genre;

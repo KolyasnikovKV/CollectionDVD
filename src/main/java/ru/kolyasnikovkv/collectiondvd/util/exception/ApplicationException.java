@@ -1,7 +1,7 @@
 package ru.kolyasnikovkv.collectiondvd.util.exception;
 
 import java.util.Arrays;
-
+/*
 public class ApplicationException extends RuntimeException {
 
     private final ErrorType type;
@@ -31,3 +31,4 @@ public class ApplicationException extends RuntimeException {
         return args;
     }
 }
+*/

@@ -24,6 +24,8 @@ public class CrudCountryJpaDao implements CrudDao<Country, Long> {
 
   @Override
   public boolean delete(Long id) {
-    return (jpaRepository.delete(id) != 0);
+    //return (jpaRepository.delete(id) != 0);
+    jpaRepository.deleteById(id);
+    return true;
   }
 }

@@ -22,6 +22,7 @@ public class ResumeWebApplicationInitializer implements WebApplicationInitialize
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
 		ctx.register(WebAppConfig.class);
+		//ctx.register(DataProvider.class);
 		servletContext.addListener(new ContextLoaderListener(ctx));
 
 		ctx.setServletContext(servletContext);

@@ -1,5 +1,7 @@
 package ru.kolyasnikovkv.collectiondvd.service;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
@@ -17,7 +19,7 @@ import java.util.stream.Collectors;
 import static ru.kolyasnikovkv.collectiondvd.util.ValidationUtil.checkNotFoundWithId;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class CountryService {
 
     private final CrudCountryJpaDao repository;
@@ -29,11 +31,12 @@ public class CountryService {
                 .stream()
                 .map(converter::convert)
                 .collect(Collectors.toList());
-
-        public Country get(Long id) {
-        Country account = repository.findById(id);
-        return checkNotFoundWithId(account, id);
-    }*/
+*/
+    public CountryDto get(Long id) {
+        Country country = repository.findById(id);
+        checkNotFoundWithId(country, id);
+        return converter.convert(country);
+    }
 
     public void delete(Long id) {
         checkNotFoundWithId(repository.delete(id), id);

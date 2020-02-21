@@ -3,7 +3,7 @@ package ru.kolyasnikovkv.collectiondvd.util;
 import org.slf4j.Logger;
 import ru.kolyasnikovkv.collectiondvd.model.WithId;
 import ru.kolyasnikovkv.collectiondvd.util.exception.IllegalRequestDataException;
-import ru.kolyasnikovkv.collectiondvd.util.exception.NotFoundException;
+//import ru.kolyasnikovkv.collectiondvd.util.exception.NotFoundException;
 
 import javax.validation.*;
 import java.util.Set;
@@ -26,11 +26,11 @@ public class ValidationUtil {
         return object;
     }
 
-    public static void checkNotFound(boolean found, String arg) {
+    /*public static void checkNotFound(boolean found, String arg) {
         if (!found) {
             throw new NotFoundException(arg);
         }
-    }
+    }*/
 
     public static void checkNew(WithId bean) {
         if (!bean.isNew()) {

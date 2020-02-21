@@ -1,22 +1,38 @@
 package ru.kolyasnikovkv.collectiondvd.controller;
 
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.kolyasnikovkv.collectiondvd.dto.CountryDto;
+import ru.kolyasnikovkv.collectiondvd.model.Country;
+import ru.kolyasnikovkv.collectiondvd.service.CountryService;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.springframework.http.ResponseEntity.ok;
 import static org.springframework.http.ResponseEntity.status;
-
+/*
 @RestController
-@RequestMapping("/api")
+@RequestMapping(value = CountryController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
 public class CountryController {
+
+    static final String REST_URL = "/rest/country";
+   /*private final CountryService countryService;
+
+
+   @GetMapping("/{id}")
+   @ResponseBody
+    public CountryDto get(@PathVariable Long id) {
+        return countryService.get(id);
+    }
+
    /*private final AccountRepository accountRepository;
-    private final UserRepository userRepository;
+   private final UserRepository userRepository;
     private final AccountToResponseConverter converter;
 
     @GetMapping("/accounts")
@@ -73,5 +89,6 @@ public class CountryController {
         }
         return status(HttpStatus.NO_CONTENT).build();
     }
-    */
+    *//*
 }
+*/

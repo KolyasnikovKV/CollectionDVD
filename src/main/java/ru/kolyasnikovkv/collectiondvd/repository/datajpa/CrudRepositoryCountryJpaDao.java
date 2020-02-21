@@ -12,8 +12,7 @@ import java.util.List;
 public interface CrudRepositoryCountryJpaDao extends JpaRepository<Country, Long> {
     List<Country> findByName(String name);
 
-    @Modifying
-    @Transactional
-    @Query("DELETE FROM Country m WHERE m.id=:id")
+    /*@Query("DELETE FROM Country m WHERE m.id=:id")
     int delete(@Param("id") Long id);
+    */
 }

@@ -1,4 +1,4 @@
-package ru.kolyasnikovkv.collectiondvd.configuration;
+package ru.kolyasnikovkv.collectiondvd.configurationJPA;
 
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;

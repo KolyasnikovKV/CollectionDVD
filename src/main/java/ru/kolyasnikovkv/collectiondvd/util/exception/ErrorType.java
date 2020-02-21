@@ -1,5 +1,5 @@
 package ru.kolyasnikovkv.collectiondvd.util.exception;
-
+/*
 import org.springframework.http.HttpStatus;
 
 public enum ErrorType {
@@ -26,3 +26,4 @@ public enum ErrorType {
         return status;
     }
 }
+*/

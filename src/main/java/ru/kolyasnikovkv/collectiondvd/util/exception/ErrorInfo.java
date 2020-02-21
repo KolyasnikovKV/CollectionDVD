@@ -1,5 +1,5 @@
 package ru.kolyasnikovkv.collectiondvd.util.exception;
-
+/*
 public class ErrorInfo {
     private final String url;
     private final ErrorType type;
@@ -12,4 +12,4 @@ public class ErrorInfo {
         this.typeMessage = typeMessage;
         this.details = details;
     }
-}
+}*/
