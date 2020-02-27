@@ -2,6 +2,7 @@ package ru.kolyasnikovkv.collectiondvd.controller;
 
 import lombok.RequiredArgsConstructor;
 
+import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,8 @@ import ru.kolyasnikovkv.collectiondvd.dto.CountryDto;
 import ru.kolyasnikovkv.collectiondvd.model.Country;
 import ru.kolyasnikovkv.collectiondvd.service.CountryService;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,6 +27,18 @@ public class CountryController {
    static final String REST_URL = "/rest/country";
    private final CountryService countryService;
 
+
+   @PostConstruct()
+   public void PostConstractHandler(){
+       Logger logger = Logger.getLogger(CountryController.class);
+       logger.info("CountryController - PostConstruct");
+   }
+
+   @PreDestroy
+   public void PreDestroy(){
+       Logger logger = Logger.getLogger(CountryController.class);
+       logger.info("CountryController - PreDestroy");
+   }
 
    @GetMapping("/{id}")
    @ResponseBody
