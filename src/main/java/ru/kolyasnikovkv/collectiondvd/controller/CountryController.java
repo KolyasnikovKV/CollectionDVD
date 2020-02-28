@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.kolyasnikovkv.collectiondvd.dto.CountryDto;
 import ru.kolyasnikovkv.collectiondvd.model.Country;
 import ru.kolyasnikovkv.collectiondvd.service.CountryService;
+import ru.kolyasnikovkv.collectiondvd.util.json.JsonUtil;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -55,6 +56,15 @@ public class CountryController {
     public ResponseEntity<CountryDto> add(@RequestBody CountryDto request) {
         //if (!accountRepository.existsByNameAndOwnerId(request.getName(), userDetails.getId())) {
         CountryDto countryDto = countryService.create(request);
+        return ok(countryDto);
+    }
+
+    @PostMapping(value ="/addStr", consumes = MediaType.TEXT_PLAIN_VALUE)
+    @ResponseBody
+    public ResponseEntity<CountryDto> addStr(@RequestBody String request) {
+        //if (!accountRepository.existsByNameAndOwnerId(request.getName(), userDetails.getId())) {
+        CountryDto countryDto = JsonUtil.readValue(request, CountryDto.class);
+        countryDto = countryService.create(countryDto);
         return ok(countryDto);
     }
      ///return status(HttpStatus.BAD_REQUEST).build();
